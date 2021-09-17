@@ -1,0 +1,1 @@
+Test creating Code and Documentation folder through browser
