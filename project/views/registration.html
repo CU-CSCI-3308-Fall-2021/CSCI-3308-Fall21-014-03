@@ -1,0 +1,173 @@
+<! <!DOCTYPE html>
+<head>
+  <meta name = "viewport" content="width=device-width, initial-scale=1.0">
+<meta charset = "utf-8">
+  <style>
+      body {
+          margin: 0;
+      }
+
+      .container{
+          width: 100vw;
+          height: 100vh;
+
+          font-family: 'Quicksand', sans-serif;
+          font-weight: bold;
+          font-size: 20px;
+
+          display: grid;
+
+          grid-template-columns: 1fr 1fr 1fr;
+          grid-template-rows: 40px 1fr 1fr 1fr;
+
+          gap: 10px;
+
+          padding: 10px;
+
+          box-sizing: border-box;
+      }
+
+      .container div {
+        padding: 20px;
+        border: 1px solid #000000;
+      }
+      .header {
+        grid-column-start: 1;
+        grid-column-end: 4;
+      }
+
+
+      li
+      {
+        float: left;
+      }
+      li a
+      {
+        display: block;
+        color: black;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+      }
+
+    li #infolist
+    {
+      color: black;
+      text-align: center;
+      text-decoration: none;
+    }
+
+      li a:hover:not(.nohov)
+      {
+        background-color: #64EA6A;
+      }
+
+      .active {
+        background-color: #04AA6D;
+              }
+      .psreqbox {
+        grid-row-start: 2;
+        grid-row-end: 5;
+        grid-column-start: 1;
+        grid-column-end: 2;
+        background-color: #60a27a;
+      }
+      .infobox {
+        grid-row-start: 2;
+        grid-row-end: 3;
+        grid-column-start: 2;
+        grid-column-end: 4;
+        background-color: #60a27a;
+      }
+      .formbox {
+        grid-row-start: 3;
+        grid-row-end: 6;
+        grid-column-start: 2;
+        grid-column-end: 4;
+        background-color: #60a27a;
+      }
+      #infolist{
+      list-style-type: circle;
+      padding: 10px;
+      }
+      #features {
+      list-style-type: circle;
+      padding: 20px;
+      }
+
+
+  </style>
+
+</head>
+
+<body   style="background-color: #3edf7e;" >
+
+    <div class = "container">
+      <div class = "psreqbox"
+      <p1>Password Requirements:  </p1>
+      <ul class = "infolist">
+        <li>Must be 8 to 64 characters in length</li><br><br>
+        <li>Must include at least 1 uppercase letter</li><br><br>
+        <li>Must include at least 1 number</li><br><br>
+      </ul>
+
+      <p1>Username Requirements:  </p1>
+      <ul class = "infolist">
+        <li>Must be 8 to 16 characters in length</li><br><br>
+        <li>Must include at least 1 number</li><br><br>
+        <li>Must not be the same as your email</li><br><br>
+      </ul>
+
+      </div>
+
+
+      <div class = "infobox">
+        <p1>Sign up with your email, a snazzy username and a secure password to
+          enjoy all our features:</p1>
+          <ul class = "features">
+            <li>Search for recipes with as few as 2 or 3 ingredients</li><br><br>
+            <li>Save your favorite recipes for quick access later</li><br><br>
+            <li>Maintain a running list of the ingredients in your pantry for even quicker recipe discovery</li><br><br>
+          </ul>
+      </div>
+      <div class = "formbox">
+        <p1>Username:</p1><br>
+        <input
+          type="username"
+          class="form-control"
+          name="user-name"
+          id="user-name"
+          placeholder="Enter Username"
+        />
+        <br><br>
+          <p1>Email:</p1><br>
+          <input
+            type="email"
+            class="form-control"
+            name="emailAddress"
+            id="emailAddress"
+            placeholder="Enter Email"
+          />
+           <br><br>
+          <p1>Password:</p1><br>
+          <input
+            type="password"
+            class="form-control"
+            id="passwordFirst"
+            name="passwordFirst"
+            placeholder="Password"
+          />
+          <br><br>
+          <p1>Confirm Password:</p1><br>
+          <input
+            type="password"
+            class="form-control"
+            id="passwordConfirm"
+            name="passwordConfirm"
+            placeholder="Confirm Password"
+          />
+          <br><br>
+        <input type="submit" value="submit" class="btn btn-primary btn-block" />
+      </div>
+    </div>
+</body>
