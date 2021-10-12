@@ -26,20 +26,14 @@
 
           box-sizing: border-box;
       }
-
       .container div {
         padding: 20px;
         border: 1px solid #000000;
       }
-      .header {
-        grid-column-start: 1;
-        grid-column-end: 4;
-      }
-
 
       li
       {
-        float: left;
+        float: center;
       }
       li a
       {
@@ -56,15 +50,6 @@
       text-align: center;
       text-decoration: none;
     }
-
-      li a:hover:not(.nohov)
-      {
-        background-color: #64EA6A;
-      }
-
-      .active {
-        background-color: #04AA6D;
-              }
       .psreqbox {
         grid-row-start: 2;
         grid-row-end: 5;
@@ -94,8 +79,6 @@
       list-style-type: circle;
       padding: 20px;
       }
-
-
   </style>
 
 </head>
@@ -167,7 +150,9 @@
             placeholder="Confirm Password"
           />
           <br><br>
-        <input type="submit" value="submit" class="btn btn-primary btn-block" />
+          <button onclick="window.location.href='greenMachineHome.html'">
+            Submit
+          </button>
       </div>
     </div>
 </body>
