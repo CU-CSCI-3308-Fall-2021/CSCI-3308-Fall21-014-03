@@ -94,8 +94,8 @@ app.get('/', function(req, res) {
 });
 
 // registration page
-app.get('/test', function(req, res) {
-	res.render('views/greenMachineHome',{
+app.get('/greenMachineHome', function(req, res) {
+	res.render('greenMachineHome',{
 		// my_title:"Registration Page"
 	});
 });
