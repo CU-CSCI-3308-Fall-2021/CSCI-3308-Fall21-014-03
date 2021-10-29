@@ -42,90 +42,46 @@ app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/'));//This line is necessary for us to use relative paths and access our resources directory
 
 
-
-/*********************************
- Below we'll add the get & post requests which will handle:
-   - Database access
-   - Parse parameters from get (URL) and post (data package)
-   - Render Views - This will decide where the user will go after the get/post request has been processed
-
- Web Page Requests:
-
-  Login Page:        Provided For your (can ignore this page)
-  Registration Page: Provided For your (can ignore this page)
-  Home Page:
-  		/home - get request (no parameters)
-  				This route will make a single query to the favorite_colors table to retrieve all of the rows of colors
-  				This data will be passed to the home view (pages/home)
-
-  		/home/pick_color - post request (color_message)
-  				This route will be used for reading in a post request from the user which provides the color message for the default color.
-  				We'll be "hard-coding" this to only work with the Default Color Button, which will pass in a color of #FFFFFF (white).
-  				The parameter, color_message, will tell us what message to display for our default color selection.
-  				This route will then render the home page's view (pages/home)
-
-  		/home/pick_color - get request (color)
-  				This route will read in a get request which provides the color (in hex) that the user has selected from the home page.
-  				Next, it will need to handle multiple postgres queries which will:
-  					1. Retrieve all of the color options from the favorite_colors table (same as /home)
-  					2. Retrieve the specific color message for the chosen color
-  				The results for these combined queries will then be passed to the home view (pages/home)
-
-  		/team_stats - get request (no parameters)
-  			This route will require no parameters.  It will require 3 postgres queries which will:
-  				1. Retrieve all of the football games in the Fall 2018 Season
-  				2. Count the number of winning games in the Fall 2018 Season
-  				3. Count the number of lossing games in the Fall 2018 Season
-  			The three query results will then be passed onto the team_stats view (pages/team_stats).
-  			The team_stats view will display all fo the football games for the season, show who won each game,
-  			and show the total number of wins/losses for the season.
-
-  		/player_info - get request (no parameters)
-  			This route will handle a single query to the football_players table which will retrieve the id & name for all of the football players.
-  			Next it will pass this result to the player_info view (pages/player_info), which will use the ids & names to populate the select tag for a form
-************************************/
-
-// login page
 app.get('/', function(req, res) {
-	res.render('views/index',{
-		// local_css:"signin.css",
-		// my_title:"Login Page"
+	res.render('index',{
+		my_title:"Welcome Page"
 	});
 });
 
-// registration page
+
 app.get('/greenMachineHome', function(req, res) {
 	res.render('greenMachineHome',{
-		// my_title:"Registration Page"
+		my_title:"Home Page"
 	});
 });
 
-/*Add your other get/post request handlers below here: */
-// app.get('/home', function(req, res) {
-// 	console.log("@^@");
-// 	res.render('pages/home',{
-// 		// local_css:"signin.css",
-// 		my_title:"Home Page!!!!!!!!"
-// 	});
-// });
+app.post('/greenMachineHome', function(req, res) {
+	console.log("hello");
+	var add_ingredient = req.body.ingredient;
+	var query = 'select * from recipes;';
+	console.log(query);
+	console.log(add_ingredient);
+	db.task('get-everything', task => {
+		return task.batch([
+			task.any(query)
+		]);
+	})
+	.then(info => {
+		console.log(info);
+		res.render('views/recipes',{
+			my_title: "Recipe Page",
+			data: info[0]
+		})
+	})
+	.catch(err => {
+		console.log('error', err);
+		res.render('views/greenMachineHome', {
+			my_title: 'Home Page',
+			data: ''
+		})
+	});
+});
 
-
-// app.get('/whatever', function(req, res) {
-// 	var the_email_I_want = req.query.email;
-// 	res.render('pages/home',{
-// 		// local_css:"signin.css",
-// 		my_title: the_email_I_want
-// 	});
-// });
-
-// app.post('/whatever', function(req, res) {
-// 	// with a differnt logic
-// 	var the_email_I_want = req.query.email;
-// 	res.render('pages/home',{
-// 		// local_css:"signin.css",
-// 		my_title: the_email_I_want
-// 	});
-// });
 
 
 
