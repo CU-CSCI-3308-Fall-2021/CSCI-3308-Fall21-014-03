@@ -43,19 +43,19 @@ app.use(express.static(__dirname + '/'));//This line is necessary for us to use 
 
 
 app.get('/', function(req, res) {
-	res.render('index',{
+	res.render('landing',{
 		my_title:"Welcome Page"
 	});
 });
 
 
-app.get('/greenMachineHome', function(req, res) {
-	res.render('greenMachineHome',{
-		my_title:"Home Page"
+app.get('/home', function(req, res) {
+	res.render('gmh',{
+		my_title:"Homepage"
 	});
 });
 
-app.post('/greenMachineHome', function(req, res) {
+app.post('/home', function(req, res) {
 	console.log("hello");
 	var add_ingredient = req.body.ingredient;
 	var query = 'select * from recipes;';
@@ -68,14 +68,14 @@ app.post('/greenMachineHome', function(req, res) {
 	})
 	.then(info => {
 		console.log(info);
-		res.render('views/recipes',{
+		res.render('recipes',{
 			my_title: "Recipe Page",
 			data: info[0]
 		})
 	})
 	.catch(err => {
 		console.log('error', err);
-		res.render('views/greenMachineHome', {
+		res.render('gmh', {
 			my_title: 'Home Page',
 			data: ''
 		})
