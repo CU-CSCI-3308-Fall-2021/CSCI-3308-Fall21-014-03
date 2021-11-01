@@ -9,23 +9,27 @@
         <p>Let's get started! </p>
 
         <div class="container1">
-            <form class = "add-ingredients">
-                <p>Enter your ingredients one-by-one: </p>
-                <input
-                type = ""
-                placeholder = "ingredient"
-                id = "insert"
-                />
-                <button class="btn btn-lg btn-primary" type="submit">add</button>
-                <br>
-                <br>
-                <button class="button1" type="submit">generate</button>
-                <button class="button1" type="submit">random recipe</button>
-            </form>
+            <form action="/home/add_ingredient" method="post">
+                <div class="form-group row">
+                    <p>Enter your ingredients one-by-one: </p>
+                    <input
+                    type = "text" name = "ingredient" id = "ingredient" placeholder = "Enter ingredient:">
+                    <button class="btn btn-lg btn-primary" type="submit">add</button>
+                    <br>
+                    <br>
+                </div>
 
+            </form>
+            
         </div>
+        <form action="/home/add_ingredient" method="get">
+            <% var variable = ''; %>
+
+        </form>
 
     </div>
+
+    
 
 
 
