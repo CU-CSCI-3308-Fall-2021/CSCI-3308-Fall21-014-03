@@ -55,19 +55,53 @@ app.get('/home', function(req, res) {
 	});
 });
 
-app.post('/home', function(req, res) {
+
+// get ingredients from user
+// add ingredients to user_ingredients table
+// display table
+app.get('/home/add_ingredient', function(req, res) {
+	var ingredient = req.body.ingredient;
+	var insert_statement = `insert into user_ingredients (ingredient_name) VALUES ('${ingredient}');`;
+	console.log(ingredient);
+
+	db.task('get-everything', task => {
+		return task.batch([
+			task.any(insert_statement)
+		]);
+	})
+	.then(info => {
+		console.log(info);
+		res.render('gmh', {
+			my_title: "Home Page",
+			data: ''
+			})
+	})
+	.catch(err => {
+		console.log('error', err);
+		res.render('gmh', {
+			my_title: 'Home Page',
+			data: ''
+			
+		})
+	});
+});
+
+// compare user_ingredients table with ingredients array column in recipe table
+// find recipe with highest number of matches
+// link to recipe page
+app.post('/home/add_ingredient', function(req, res) {
 	console.log("hello");
 	var add_ingredient = req.body.ingredient;
 	var query = 'select * from recipes;';
-	console.log(query);
-	console.log(add_ingredient);
+	// console.log(query);
+	// console.log(add_ingredient);
 	db.task('get-everything', task => {
 		return task.batch([
 			task.any(query)
 		]);
 	})
 	.then(info => {
-		console.log(info);
+		// console.log(info);
 		res.render('recipes',{
 			my_title: "Recipe Page",
 			data: info[0]
