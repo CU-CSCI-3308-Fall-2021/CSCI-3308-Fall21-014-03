@@ -51,13 +51,14 @@ app.get('/', function(req, res) {
 
 app.get('/home', function(req, res) {
 	res.render('gmh',{
-		my_title:"Homepage"
+		my_title: "Homepage",
+		data: ''
 	});
 });
 
 
-
 // add ingredients to user_ingredients table
+// display table as things are added
 app.post('/home/add_ingredient', function(req, res) {
 	var ingredient = req.body.ingredient;
 	var insert_statement = `insert into user_ingredients (ingredient_name) VALUES ('${ingredient}');`;
@@ -75,7 +76,7 @@ app.post('/home/add_ingredient', function(req, res) {
 			data: info[1]
 		})
 	})
-	.catch(err => {
+	.catch(err => { 
 		console.log('error', err);
 		res.render('gmh', {
 			my_title: 'Home Page',
@@ -83,8 +84,6 @@ app.post('/home/add_ingredient', function(req, res) {
 		})
 	});
 });
-
-
 
 app.post('/home/clear_ingredients', function(req, res) {
 	var delete_statement = `TRUNCATE TABLE user_ingredients;`;
@@ -106,6 +105,27 @@ app.post('/home/clear_ingredients', function(req, res) {
 			data: ''
 		})
 	});
+});
+
+// get ingredients from user_ingredients table
+// render the corresponding recipe
+app.get('/recipes', function(req, res) {
+	var user_ingredients = 'select * from user_ingredients;';
+	console.log(user_ingredients);
+	db.any(user_ingredients)
+		.then(function (rows) {
+			res.render('recipes', {
+				my_title: "Recipe Page",
+				data: rows
+			})
+		})
+		.catch(function (err) {
+			console.log('error', err);
+			res.render('recipes', {
+				my_title: 'Recipe Page',
+				data: ''
+			})
+		})
 });
 
 
