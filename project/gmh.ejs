@@ -1,0 +1,73 @@
+<body>
+    
+    <h1>Green Machine</h1>
+
+    <div class ="container">
+        
+        <p>Hello! </p>
+        <p>Here at Green Machine, we want to promote a zero-waste world by helping you work with what you already have! Enter your pantry ingredients below and we'll give you a recipe that will help you use them. </p>
+        <p>Let's get started! </p>
+
+        <div class="container1">
+            <form action="/home/add_ingredient" method="post">
+                <div class="form-group row">
+                    <p>Enter your ingredients one-by-one: </p>
+                    <div>
+                        <input type="text" class="form-control" name="ingredient" id="ingredient" placeholder="Enter ingredient:">
+                    </div>
+                </div>
+                <button class="btn btn-lg btn-primary" type="submit">add</button>
+            </form>
+            
+        </div>
+        <form action="/home/add_ingredient" method="get">
+            <% console.log(data)%>
+        
+        </form>
+
+    </div>
+
+    
+
+
+
+</body>
+
+<style>
+    h1 {text-align: center; 
+        font-family:"Brush Script MT", cursive;
+        font-size: 60px; color: rgb(112, 180, 112); 
+        background-color: white; 
+        border: 1px solid black;
+
+    }
+    p {text-align: center; font-family: 'Courier New', Courier, monospace;}
+    body{
+        background-image: url("veggieBackground.jpeg");
+    }
+    .container{
+        border: 1px solid black;
+        background-color: rgb(255, 255, 255);
+        width: 50%;
+        margin: auto;
+        padding: 1%;
+
+    }
+    .container1{
+        border: 1px solid black;
+        background-color: rgb(200, 219, 195);
+        width: 50%;
+        margin: auto;
+        padding: 1%;
+
+    }
+    .add-ingredients{
+        text-align: center;
+    }
+    .button1{
+        border-top: 1px rgb(9, 61, 11);
+        background-color: rgb(137, 187, 131);
+        border-radius: 10%;
+
+    }
+</style>

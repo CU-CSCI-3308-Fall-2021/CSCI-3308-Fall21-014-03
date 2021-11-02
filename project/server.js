@@ -56,25 +56,28 @@ app.get('/home', function(req, res) {
 });
 
 
-// get ingredients from user
-// add ingredients to user_ingredients table
 // display table
 app.get('/home/add_ingredient', function(req, res) {
+	console.log("in get");
 	var ingredient = req.body.ingredient;
+	// var all_ingredients = 'select * from ingredients;';
 	var insert_statement = `insert into user_ingredients (ingredient_name) VALUES ('${ingredient}');`;
-	console.log(ingredient);
+	var ingredient_select = 'select * from user_ingredients;';
+	// console.log(ingredient);
 
 	db.task('get-everything', task => {
 		return task.batch([
-			task.any(insert_statement)
+			// task.any(all_ingredients),
+			task.any(insert_statement),
+			task.any(ingredient_select)
 		]);
 	})
 	.then(info => {
-		console.log(info);
+		console.log(info[1]);
 		res.render('gmh', {
 			my_title: "Home Page",
-			data: ''
-			})
+			data: info
+		})
 	})
 	.catch(err => {
 		console.log('error', err);
@@ -86,25 +89,25 @@ app.get('/home/add_ingredient', function(req, res) {
 	});
 });
 
-// compare user_ingredients table with ingredients array column in recipe table
-// find recipe with highest number of matches
-// link to recipe page
-app.post('/home/add_ingredient', function(req, res) {
-	console.log("hello");
-	var add_ingredient = req.body.ingredient;
-	var query = 'select * from recipes;';
-	// console.log(query);
-	// console.log(add_ingredient);
+// add ingredients to user_ingredients table
+app.post('/home/add_ingredient', function(req, res) { 
+	var ingredient = req.body.ingredient;
+	var insert_statement = `insert into user_ingredients (ingredient_name) VALUES ('${ingredient}');`;
+	var ingredient_select = 'select * from user_ingredients;';
+	
+	// console.log(insert_statement);
+	// console.log(ingredient);
 	db.task('get-everything', task => {
 		return task.batch([
-			task.any(query)
+			task.any(insert_statement),
+			task.any(ingredient_select)
 		]);
 	})
 	.then(info => {
-		// console.log(info);
-		res.render('recipes',{
-			my_title: "Recipe Page",
-			data: info[0]
+		// console.log("INFO:", info[1]);
+		res.render('gmh',{
+			my_title: "Home Page",
+			data: info[1]
 		})
 	})
 	.catch(err => {
