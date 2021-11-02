@@ -1,14 +1,17 @@
 <body>
-    
+
     <h1>Green Machine</h1>
 
     <div class ="container">
-        
+
         <p>Hello! </p>
         <p>Here at Green Machine, we want to promote a zero-waste world by helping you work with what you already have! Enter your pantry ingredients below and we'll give you a recipe that will help you use them. </p>
         <p>Let's get started! </p>
 
         <div class="container1">
+            <form action="/home/clear_ingredients" method="post">
+                    <button class="btn btn-lg btn-primary" type="submit">clear ingredients</button>
+            </form>
             <form action="/home/add_ingredient" method="post">
                 <div class="form-group row">
                     <p>Enter your ingredients one-by-one: </p>
@@ -20,26 +23,26 @@
                 </div>
 
             </form>
-            
+
         </div>
-        <form action="/home/add_ingredient" method="get">
+        <form action="/home/add_ingredient" method="post">
             <% var variable = ''; %>
 
         </form>
 
     </div>
 
-    
+
 
 
 
 </body>
 
 <style>
-    h1 {text-align: center; 
+    h1 {text-align: center;
         font-family:"Brush Script MT", cursive;
-        font-size: 60px; color: rgb(112, 180, 112); 
-        background-color: white; 
+        font-size: 60px; color: rgb(112, 180, 112);
+        background-color: white;
         border: 1px solid black;
 
     }

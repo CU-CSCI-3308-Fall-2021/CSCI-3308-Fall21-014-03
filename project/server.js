@@ -56,27 +56,23 @@ app.get('/home', function(req, res) {
 });
 
 
-// display table
-app.get('/home/add_ingredient', function(req, res) {
-	console.log("in get");
+
+// add ingredients to user_ingredients table
+app.post('/home/add_ingredient', function(req, res) {
 	var ingredient = req.body.ingredient;
-	// var all_ingredients = 'select * from ingredients;';
 	var insert_statement = `insert into user_ingredients (ingredient_name) VALUES ('${ingredient}');`;
 	var ingredient_select = 'select * from user_ingredients;';
-	// console.log(ingredient);
-
 	db.task('get-everything', task => {
 		return task.batch([
-			// task.any(all_ingredients),
 			task.any(insert_statement),
 			task.any(ingredient_select)
 		]);
 	})
 	.then(info => {
-		console.log(info[1]);
-		res.render('gmh', {
+		console.log("INFO:", info[1]);
+		res.render('gmh',{
 			my_title: "Home Page",
-			data: info
+			data: info[1]
 		})
 	})
 	.catch(err => {
@@ -84,27 +80,20 @@ app.get('/home/add_ingredient', function(req, res) {
 		res.render('gmh', {
 			my_title: 'Home Page',
 			data: ''
-			
 		})
 	});
 });
 
-// add ingredients to user_ingredients table
-app.post('/home/add_ingredient', function(req, res) { 
-	var ingredient = req.body.ingredient;
-	var insert_statement = `insert into user_ingredients (ingredient_name) VALUES ('${ingredient}');`;
-	var ingredient_select = 'select * from user_ingredients;';
-	
-	// console.log(insert_statement);
-	// console.log(ingredient);
+
+
+app.post('/home/clear_ingredients', function(req, res) {
+	var delete_statement = `TRUNCATE TABLE user_ingredients;`;
 	db.task('get-everything', task => {
 		return task.batch([
-			task.any(insert_statement),
-			task.any(ingredient_select)
+			task.any(delete_statement),
 		]);
 	})
 	.then(info => {
-		console.log("***** INFO:", info[1]);
 		res.render('gmh',{
 			my_title: "Home Page",
 			data: info[1]
