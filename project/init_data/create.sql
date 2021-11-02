@@ -20,3 +20,7 @@ VALUES('Muffins', ARRAY ['flour', 'baking powder', 'salt', 'sugar', 'eggs', 'mil
 ('Fried Rice', ARRAY ['rice', 'soy sauce', 'oyster sauce', 'sesame oil', 'butter']),
 ('Simple salad', ARRAY ['spinach', 'tomato', 'sesame oil']);
 
+DROP TABLE IF EXISTS user_ingredients CASCADE;
+CREATE TABLE IF NOT EXISTS user_ingredients(
+  ingredient_name VARCHAR(15));
+

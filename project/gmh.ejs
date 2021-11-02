@@ -18,13 +18,16 @@
                 </div>
                 <button class="btn btn-lg btn-primary" type="submit">add</button>
             </form>
-            
-        </div>
-        <form action="/home/add_ingredient" method="get">
-            <% console.log(data)%>
-        
-        </form>
 
+            <%
+            if (data) {
+                var buttons = '';
+                console.log("&&&&&", data);
+                }); %>
+            <%- buttons %>
+            <% } %>
+
+        </div>
     </div>
 
     

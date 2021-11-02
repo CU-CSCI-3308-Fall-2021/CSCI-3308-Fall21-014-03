@@ -104,7 +104,7 @@ app.post('/home/add_ingredient', function(req, res) {
 		]);
 	})
 	.then(info => {
-		// console.log("INFO:", info[1]);
+		console.log("***** INFO:", info[1]);
 		res.render('gmh',{
 			my_title: "Home Page",
 			data: info[1]
