@@ -20,15 +20,24 @@
                     <button class="btn btn-lg btn-primary" type="submit">add</button>
                     <br>
                     <br>
+                    <a class="btn btn-lg btn-primary" href="recipes">Generate Recipe</a> 
+                </div>
+                <div>
+                    <% if (data) {
+                        var table = '';
+                        var ingredient = '';
+                        data.forEach(function(item) {
+                        
+                            table += '<tr>' + '<td>' + item.ingredient_name + '</td>' + '</tr>' + '<br>';
+                
+                        }); %>
+                        <%- table %>
+                    <% } %>
                 </div>
 
             </form>
-
         </div>
-        <form action="/home/add_ingredient" method="post">
-            <% var variable = ''; %>
-
-        </form>
+        
 
     </div>
 
