@@ -64,6 +64,9 @@
 
 <h1>Green Machine Recipes</h1>
 
+
+
+
 <div class="flip-card">
   <div class="flip-card-inner">
     <div class="flip-card-front">
@@ -71,6 +74,46 @@
     </div>
     <div class="flip-card-back">
       <p>To be added... Redirect or expand on click</p>
+      <p>Matching Recipe:</p>
+      <div class="container1">
+        <form action="/recipes/generate_recipe" method="get">
+            <div class="form-group row">
+            </div>
+            <div>
+                <% if (ingredients) { %>
+                   <% var table = ''; %>
+                    <% var matchCount = 0; %>
+                    <% var matchingRecipe = ''; %>
+                    <% recipes.forEach(function(recipe) { %>
+                      <% var currCount = 0; %>
+                      <% var currRecipe = recipe.dish_name %>
+                      <% var parts = recipe.parts; %>
+                      <% ingredients.forEach(function(ingredient) { %>
+                        <% parts.forEach(function(part) { %>
+                          <% if(part == ingredient.ingredient_name) { %>
+                            <% currCount += 1; %>
+                          <% } %>
+                        <% }); %>
+                      <% }); %>
+                      <% if(recipe == recipes[0]) { %>
+                          <% matchCount = currCount; %>
+                      <% } %>
+                      <% if(currCount > matchCount) { %>
+                          <% matchCount = currCount; %>
+                          <% matchingRecipe = recipe.dish_name %>
+                          <%- console.log(recipe.dish_name) %>
+                      <% } %>
+                    <% }); %>
+                    <%- matchingRecipe %>
+                <% } %>
+            </div>
+        </form>
+      </div>
+
+
+
+
+
       <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Expand recipe page</button>
     </div>
   </div>

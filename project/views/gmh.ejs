@@ -9,7 +9,6 @@
         <p>Let's get started! </p>
 
         <div class="container1">
-            
             <form action="/home/add_ingredient" method="post">
                 <div class="form-group row">
                     <p>Enter your ingredients one-by-one: </p>
@@ -18,12 +17,6 @@
                     <button class="btn btn-lg btn-primary" type="submit">add</button>
                     <br>
                     <br>
-                    <form action="/home/clear_ingredients" method="post">
-                        <button class="test" type="submit">clear ingredients</button>
-                </form>
-                    <form action="/recipes" method="get">
-                        <button class="test" type="submit">Generate Recipe</button>
-                </form>
                 </div>
                 <div>
                     <% if (data) {
@@ -37,7 +30,12 @@
                         <%- table %>
                     <% } %>
                 </div>
-
+            </form>
+            <form action="/home/clear_ingredients" method="post">
+                        <button class="test" type="submit">clear ingredients</button>
+            </form>
+            <form action="/recipes" method="get">
+                        <button class="test" type="submit">Generate Recipe</button>
             </form>
         </div>
         

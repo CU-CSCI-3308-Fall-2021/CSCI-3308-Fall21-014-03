@@ -16,6 +16,8 @@ VALUES ('eggs'),('flour'),('butter'),('sugar'),('salt'),('pepper'),('baking powd
 
 INSERT INTO recipes(dish_name, parts)
 VALUES('Muffins', ARRAY ['flour', 'baking powder', 'salt', 'sugar', 'eggs', 'milk', 'vegatable oil']),
+('Chocolate Chip Cookies', ARRAY ['flour', 'baking powder', 'salt', 'sugar', 'eggs', 'chocolate chips']),
+('Sugar Cookies', ARRAY ['flour', 'baking powder', 'salt', 'sugar', 'eggs']),
 ('Seafood Pasta', ARRAY ['seafood', 'garlic', 'lemon juice', 'white wine', 'cream', 'chili flakes', 'pasta']),
 ('Fried Rice', ARRAY ['rice', 'soy sauce', 'oyster sauce', 'sesame oil', 'butter']),
 ('Simple salad', ARRAY ['spinach', 'tomato', 'sesame oil']);

@@ -112,21 +112,32 @@ app.post('/home/clear_ingredients', function(req, res) {
 app.get('/recipes', function(req, res) {
 	var deleteTable = 'DROP TABLE user_ingredients';
 	var user_ingredients = 'select * from user_ingredients;';
+	var all_recipes = 'select * from recipes;';
 	console.log(user_ingredients);
-	db.any(user_ingredients)
-		.then(function (rows) {
-			res.render('recipes', {
-				my_title: "Recipe Page",
-				data: rows
-			})
+	db.task('get-everything', task => {
+		return task.batch([
+			task.any(user_ingredients),
+			task.any(all_recipes)
+		]);
+	})
+	.then(info => {
+		// console.log("RECIPES and INGREDIENTS:",info);
+		// console.log("recipe array:", info[1][0].parts)
+		console.log('recipes:',info[1])
+		res.render('recipes', {
+			my_title: "Recipe Page",
+			ingredients: info[0],
+			recipes: info[1]
 		})
-		.catch(function (err) {
-			console.log('error', err);
-			res.render('recipes', {
-				my_title: 'Recipe Page',
-				data: ''
-			})
+	})
+	.catch(function (err) {
+		console.log('error', err);
+		res.render('recipes', {
+			my_title: "Recipe Page",
+			ingredients: '',
+			recipes: ''
 		})
+	})
 });
 
 
