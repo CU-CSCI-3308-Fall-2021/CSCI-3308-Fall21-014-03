@@ -110,6 +110,7 @@ app.post('/home/clear_ingredients', function(req, res) {
 // get ingredients from user_ingredients table
 // render the corresponding recipe
 app.get('/recipes', function(req, res) {
+	var deleteTable = 'DROP TABLE user_ingredients';
 	var user_ingredients = 'select * from user_ingredients;';
 	console.log(user_ingredients);
 	db.any(user_ingredients)

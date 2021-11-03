@@ -9,9 +9,7 @@
         <p>Let's get started! </p>
 
         <div class="container1">
-            <form action="/home/clear_ingredients" method="post">
-                    <button class="btn btn-lg btn-primary" type="submit">clear ingredients</button>
-            </form>
+            
             <form action="/home/add_ingredient" method="post">
                 <div class="form-group row">
                     <p>Enter your ingredients one-by-one: </p>
@@ -20,7 +18,12 @@
                     <button class="btn btn-lg btn-primary" type="submit">add</button>
                     <br>
                     <br>
-                    <a class="btn btn-lg btn-primary" href="recipes">Generate Recipe</a> 
+                    <form action="/home/clear_ingredients" method="post">
+                        <button class="test" type="submit">clear ingredients</button>
+                </form>
+                    <form action="/recipes" method="get">
+                        <button class="test" type="submit">Generate Recipe</button>
+                </form>
                 </div>
                 <div>
                     <% if (data) {
@@ -57,7 +60,7 @@
     }
     p {text-align: center; font-family: 'Courier New', Courier, monospace;}
     body{
-        background-image: url("veggieBackground.jpeg");
+        background-image: url(/views/img/veggieBackground.jpeg);
     }
     .container{
         border: 1px solid black;
@@ -73,6 +76,7 @@
         width: 50%;
         margin: auto;
         padding: 1%;
+        text-align: center;
 
     }
     .add-ingredients{
