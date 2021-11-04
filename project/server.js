@@ -121,7 +121,7 @@ app.get('/recipes', function(req, res) {
 		]);
 	})
 	.then(info => {
-		// console.log("RECIPES and INGREDIENTS:",info);
+		console.log("ALL INFO:",info);
 		// console.log("recipe array:", info[1][0].parts)
 		console.log('recipes:',info[1])
 		res.render('recipes', {

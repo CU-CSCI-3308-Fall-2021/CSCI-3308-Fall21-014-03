@@ -64,71 +64,60 @@
 
 <h1>Green Machine Recipes</h1>
 
-
+<div class="container1">
+  <form action="/recipes/generate_recipe" method="get">
+      <div class="form-group row">
+      </div>
+      <div>
+          <% if (ingredients) { %>
+             <% var table = ''; %>
+              <% var matchCount = 0; %>
+              <% var matchingRecipe = ''; %>
+              <% var matchingImg = ''; %>
+              <% recipes.forEach(function(recipe) { %>
+                <% var currCount = 0; %>
+                <% var currRecipe = recipe.dish_name %>
+                <% var parts = recipe.parts; %>
+                <% ingredients.forEach(function(ingredient) { %>
+                  <% parts.forEach(function(part) { %>
+                    <% if(part == ingredient.ingredient_name) { %>
+                      <% currCount += 1; %>
+                    <% } %>
+                  <% }); %>
+                <% }); %>
+                <% if(recipe == recipes[0]) { %>
+                    <% matchCount = currCount; %>
+                <% } %>
+                <% if(currCount >= matchCount) { %>
+                    <% matchCount = currCount; %>
+                    <% matchingRecipe = recipe.dish_name %>
+                    <% matchingImg = '../views/img/'+recipe.img %>
+                    <%- console.log(recipe.dish_name) %>
+                <% } %>
+                
+              <% }); %>
+          <% } %>
+      </div>
+  </form>
+</div>
 
 
 <div class="flip-card">
   <div class="flip-card-inner">
     <div class="flip-card-front">
-      <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MTd8fHxlbnwwfHx8fA%3D%3D&w=1000&q=80" alt="Avatar" style="width:300px;height:300px;">
+      <img src="<%- matchingImg %>" alt="Avatar" style="width:300px;height:300px;">
     </div>
     <div class="flip-card-back">
       <p>To be added... Redirect or expand on click</p>
       <p>Matching Recipe:</p>
-      <div class="container1">
-        <form action="/recipes/generate_recipe" method="get">
-            <div class="form-group row">
-            </div>
-            <div>
-                <% if (ingredients) { %>
-                   <% var table = ''; %>
-                    <% var matchCount = 0; %>
-                    <% var matchingRecipe = ''; %>
-                    <% recipes.forEach(function(recipe) { %>
-                      <% var currCount = 0; %>
-                      <% var currRecipe = recipe.dish_name %>
-                      <% var parts = recipe.parts; %>
-                      <% ingredients.forEach(function(ingredient) { %>
-                        <% parts.forEach(function(part) { %>
-                          <% if(part == ingredient.ingredient_name) { %>
-                            <% currCount += 1; %>
-                          <% } %>
-                        <% }); %>
-                      <% }); %>
-                      <% if(recipe == recipes[0]) { %>
-                          <% matchCount = currCount; %>
-                      <% } %>
-                      <% if(currCount > matchCount) { %>
-                          <% matchCount = currCount; %>
-                          <% matchingRecipe = recipe.dish_name %>
-                          <%- console.log(recipe.dish_name) %>
-                      <% } %>
-                    <% }); %>
-                    <%- matchingRecipe %>
-                <% } %>
-            </div>
-        </form>
-      </div>
-
-
-
-
-
+      <%- matchingRecipe %>
+      <br>
       <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Expand recipe page</button>
     </div>
   </div>
 </div>
 
-<div class="flip-card">
-    <div class="flip-card-inner">
-      <div class="flip-card-front">
-        <img src="https://www.eatright.org/-/media/eatrightimages/health/pregnancy/fertilityandreproduction/bean-corn-tomato-salad-1056788234.jpg?h=450&w=600&la=en&hash=8E919F45C2E0A8D540BB725663DD2F7F3A8CB804" alt="Avatar" style="width:300px;height:300px;">
-      </div>
-      <div class="flip-card-back">
-        <p>Info goes here</p>
-      </div>
-    </div>
-  </div>
+
 <!-- Modal -->
 <div class="modal fade" id="myModal" role="dialog">
   <div class="modal-dialog">
