@@ -74,6 +74,7 @@
               <% var matchCount = 0; %>
               <% var matchingRecipe = ''; %>
               <% var matchingImg = ''; %>
+              <% var theRecipe = ''; %>
               <% recipes.forEach(function(recipe) { %>
                 <% var currCount = 0; %>
                 <% var currRecipe = recipe.dish_name %>
@@ -92,7 +93,8 @@
                     <% matchCount = currCount; %>
                     <% matchingRecipe = recipe.dish_name %>
                     <% matchingImg = '../views/img/'+recipe.img %>
-                    <%- console.log(recipe.dish_name) %>
+                    <% theRecipe = recipe.recipeInformation %>
+                    <%- console.log(recipe.recipeInformation) %>
                 <% } %>
                 
               <% }); %>
@@ -111,7 +113,9 @@
       <p>To be added... Redirect or expand on click</p>
       <p>Matching Recipe:</p>
       <%- matchingRecipe %>
+      <%- theRecipe %>
       <br>
+      
       <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Expand recipe page</button>
     </div>
   </div>
