@@ -23,6 +23,7 @@ VALUES('Muffins', 'cherryMuffins.png', 'info', ARRAY ['flour', 'baking powder', 
 ('Seafood Pasta', 'seafoodPasta.png', 'info', ARRAY ['shrimp', 'garlic', 'lemon juice', 'white wine', 'cream', 'chili flakes', 'pasta']),
 ('Fried Rice', 'friedRice.png', 'info', ARRAY ['rice', 'egg', 'soy sauce', 'oyster sauce', 'sesame oil', 'butter']),
 ('Simple salad','simpleSalad.png', 'info', ARRAY ['spinach', 'tomato', 'red onion', 'sesame oil']);
+('Tom Yum Soup', 'tomYum.jpeg', 'info', ARRAY ['shrimp', 'garlic', 'chicken stock','mushroom','tomato','onion']);
 
 DROP TABLE IF EXISTS user_ingredients CASCADE;
 CREATE TABLE IF NOT EXISTS user_ingredients(

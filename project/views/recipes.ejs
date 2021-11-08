@@ -1,147 +1,109 @@
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-  h1 {text-align: center;
-        font-family:"Brush Script MT", cursive;
-        font-size: 60px; color: rgb(112, 180, 112);
+ 
+  <head>
+    <h1>Green Machine</h1>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Krub">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Leckerli One">
+    <link rel="stylesheet" href='https://fonts.googleapis.com/css?family=Dekko'>
+    <link rel="stylesheet" href='https://fonts.googleapis.com/css?family=Manrope'>
+  </head>
+  <body>
+  
+  
+    <div class="container1">
+        <form action="/recipes/generate_recipe" method="get">
+            <div class="form-group row">
+           
+                <% if (ingredients) { %>
+                   <% var table = ''; %>
+                    <% var matchCount = 0; %>
+                    <% var matchingRecipe = ''; %>
+                    <% var matchingImg = ''; %>
+                    <% var theRecipe = ''; %>
+                    <% recipes.forEach(function(recipe) { %>
+                      <% var currCount = 0; %>
+                      <% var currRecipe = recipe.dish_name %>
+                      <% var parts = recipe.parts; %>
+                      <% ingredients.forEach(function(ingredient) { %>
+                        <% parts.forEach(function(part) { %>
+                          <% if(part == ingredient.ingredient_name) { %>
+                            <% currCount += 1; %>
+                          <% } %>
+                        <% }); %>
+                      <% }); %>
+                      <% if(recipe == recipes[0]) { %>
+                          <% matchCount = currCount; %>
+                      <% } %>
+                      <% if(currCount >= matchCount) { %>
+                          <% matchCount = currCount; %>
+                          <% matchingRecipe = recipe.dish_name %>
+                          <% matchingImg = '../views/img/'+recipe.img %>
+                          <% theRecipe = recipe.recipeInformation %>
+                          <%- console.log(recipe.recipeInformation) %>
+                      <% } %>
+                      
+                    <% }); %>
+                <% } %>
+            </div>
+            <h2>Matching Recipe:</h2>
+            <%- matchingRecipe %>
+            <%- theRecipe %>
+        </form>
+        <form action="/home/clear_ingredients" method="post">
+                    <button class="test" type="submit">clear ingredients</button>
+        </form>
+        <form action="/recipes" method="get">
+                    <button class="test" type="submit">Generate Recipe</button>
+        </form>
+    </div>
+    
+    <br>
+
+  </body>
+
+  <style>
+    h1 {text-align: center;
+        font-family:'Leckerli One';
+        font-size: 60px; color: rgb(81, 136, 81);
         background-color: white;
         border: 1px solid black;
 
     }
+    p {text-align: center; font-family: 'Manrope'; font-size: 20px;}
+    body{
+        background-image: url(/views/img/veggieBackground.jpeg);
+    }
+    .container1{
+        border: 1px solid black;
+        background-color: rgb(200, 219, 195);
+        width: 95%;
+        height: 80%;
+        margin: auto;
+        margin-top: 30px;
+        padding: 1%;
+        text-align: center;
 
-  body {
-    font-family: Arial, Helvetica, sans-serif;
-    background-image: url(/views/img/veggieBackground.jpeg);
-  }
-  .flip-card {
-      margin: 0 auto;
-      float: none;
-      margin-bottom: 10px;
-      background-color: transparent;
-      width: 300px;
-      height: 300px;
-      perspective: 1000px;
-  }
+    }
+    .test{
+        position: relative;
+        display: inline-block;
+        padding: 0.25em 0.5em;
+        text-decoration: none;
+        color: #FFF;
+        background: #629760;
+        border-radius: 4px;
+        box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), inset 0 -2px 0 rgba(0, 0, 0, 0.05);
+        font-weight: bold;
+        border: solid 2px #4a7449;
+        font-family: 'Dekko';
+    }
 
-  .flip-card-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    transition: transform 0.6s;
-    transform-style: preserve-3d;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-  }
 
-  .flip-card:hover .flip-card-inner {
-    transform: rotateY(180deg);
-  }
-
-  .flip-card-front, .flip-card-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-  }
-
-  .flip-card-front {
-    background-color: #bbb;
-    color: black;
-  }
-
-  .flip-card-back {
-    background-color: rgb(112, 180, 112);
-    color: white;
-    transform: rotateY(180deg);
-  }
+    .test:active {  box-shadow: 0 0 2px rgba(0, 0, 0, 0.30); }
 </style>
-</head>
-<body>
-
-<h1>Green Machine Recipes</h1>
-
-<div class="container1">
-  <form action="/recipes/generate_recipe" method="get">
-      <div class="form-group row">
-      </div>
-      <div>
-          <% if (ingredients) { %>
-             <% var table = ''; %>
-              <% var matchCount = 0; %>
-              <% var matchingRecipe = ''; %>
-              <% var matchingImg = ''; %>
-              <% var theRecipe = ''; %>
-              <% recipes.forEach(function(recipe) { %>
-                <% var currCount = 0; %>
-                <% var currRecipe = recipe.dish_name %>
-                <% var parts = recipe.parts; %>
-                <% ingredients.forEach(function(ingredient) { %>
-                  <% parts.forEach(function(part) { %>
-                    <% if(part == ingredient.ingredient_name) { %>
-                      <% currCount += 1; %>
-                    <% } %>
-                  <% }); %>
-                <% }); %>
-                <% if(recipe == recipes[0]) { %>
-                    <% matchCount = currCount; %>
-                <% } %>
-                <% if(currCount >= matchCount) { %>
-                    <% matchCount = currCount; %>
-                    <% matchingRecipe = recipe.dish_name %>
-                    <% matchingImg = '../views/img/'+recipe.img %>
-                    <% theRecipe = recipe.recipeInformation %>
-                    <%- console.log(recipe.recipeInformation) %>
-                <% } %>
-                
-              <% }); %>
-          <% } %>
-      </div>
-  </form>
-</div>
-
-
-<div class="flip-card">
-  <div class="flip-card-inner">
-    <div class="flip-card-front">
-      <img src="<%- matchingImg %>" alt="Avatar" style="width:300px;height:300px;">
-    </div>
-    <div class="flip-card-back">
-      <p>To be added... Redirect or expand on click</p>
-      <p>Matching Recipe:</p>
-      <%- matchingRecipe %>
-      <%- theRecipe %>
-      <br>
-      
-      <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Expand recipe page</button>
-    </div>
-  </div>
-</div>
-
-
-<!-- Modal -->
-<div class="modal fade" id="myModal" role="dialog">
-  <div class="modal-dialog">
-
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Expanded recipe here</h4>
-      </div>
-      <div class="modal-body">
-        <p>More stuff in here (connect to DB)</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-</body>
+  
