@@ -1,6 +1,10 @@
 <body>
 
     <h1>Green Machine</h1>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Krub">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Leckerli One">
+    <link rel="stylesheet" href='https://fonts.googleapis.com/css?family=Dekko'>
+    
 
     <div class ="container">
 
@@ -11,7 +15,7 @@
             <p>"Green Machine has the lamb Sauce!" - Gordon Ramsey </p>
             <form class = "landing">
 
-                <a href="/home" class="btn btn-primary btn-lg disabled" role="button" aria-disabled="true">Create a Recipe</a>
+                <a href="/home" class="button" role="button" aria-disabled="true">Create a Recipe</a>
 
             </form>
 
@@ -28,29 +32,28 @@
 
 <style>
     h1 {text-align: center;
-        font-family:"Brush Script MT", cursive;
-        font-size: 60px; color: rgb(112, 180, 112);
+        font-family:'Leckerli One';
+        font-size: 60px; color: rgb(81, 136, 81);
         background-color: white;
         border: 1px solid black;
 
     }
-    p {text-align: center; font-family: 'Courier New', Courier, monospace;}
+    p {text-align: center; font-family: krub;}
     body{
-        background-image: url('veggieBackground.jpeg');
+        background-image: url(/views/img/veggieBackground.jpeg);
     }
     .container{
         font-size: 30px;
-
+        border: 1px solid black;
         background-color: rgb(255, 255, 255);
         width: 75%;
-        margin: auto;
+        margin: auto ;
         padding: 1%;
 
     }
     .container1{
         font-size: 20px;
         background-color: rgb(200, 219, 195);
-
         margin: auto;
         padding: 1%;
 
@@ -59,9 +62,21 @@
         text-align: center;
     }
     .button{
-        border-top: 1px rgb(9, 61, 11);
-        background-color: rgb(137, 187, 131);
+        position: relative;
+    display: inline-block;
+    padding: 0.25em 0.5em;
+    text-decoration: none;
+    color: #FFF;
+    background: #629760;
+    border-radius: 4px;
+    box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), inset 0 -2px 0 rgba(0, 0, 0, 0.05);
+    font-weight: bold;
+    border: solid 2px #4a7449;
+    font-family: 'Dekko';
 
 
     }
+    .button:active {  box-shadow: 0 0 2px rgba(0, 0, 0, 0.30); }
+
+    
 </style>
