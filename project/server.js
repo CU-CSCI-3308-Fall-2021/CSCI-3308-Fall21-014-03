@@ -113,7 +113,7 @@ app.get('/recipes', function(req, res) {
 	var deleteTable = 'DROP TABLE user_ingredients';
 	var user_ingredients = 'select * from user_ingredients;';
 	var all_recipes = 'select * from recipes;';
-	console.log(user_ingredients);
+	//console.log(user_ingredients);
 	db.task('get-everything', task => {
 		return task.batch([
 			task.any(user_ingredients),
@@ -121,9 +121,9 @@ app.get('/recipes', function(req, res) {
 		]);
 	})
 	.then(info => {
-		console.log("ALL INFO:",info);
+		//console.log("ALL INFO:",info);
 		// console.log("recipe array:", info[1][0].parts)
-		console.log('recipes:',info[1])
+		//console.log('recipes:',info[1])
 		res.render('recipes', {
 			my_title: "Recipe Page",
 			ingredients: info[0],

@@ -1,11 +1,15 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
  
-  <head>
     <h1>Green Machine</h1>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Krub">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Leckerli One">
@@ -43,23 +47,53 @@
                           <% matchCount = currCount; %>
                           <% matchingRecipe = recipe.dish_name %>
                           <% matchingImg = '../views/img/'+recipe.img %>
+                          <%console.log(recipe.img); %>
                           <% theRecipe = recipe.recipeInformation %>
-                          <%- console.log(recipe.recipeInformation) %>
                       <% } %>
                       
                     <% }); %>
                 <% } %>
+                <h2>Here's what Green Machine came up with!:</h2>
+                
             </div>
-            <h2>Matching Recipe:</h2>
-            <%- matchingRecipe %>
-            <%- theRecipe %>
-        </form>
-        <form action="/home/clear_ingredients" method="post">
-                    <button class="test" type="submit">clear ingredients</button>
-        </form>
-        <form action="/recipes" method="get">
-                    <button class="test" type="submit">Generate Recipe</button>
-        </form>
+
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                  <div class="flip-card-front">
+                    <img src="<%- matchingImg %>" alt="Avatar" style="width:300px;height:300px;">
+                  </div>
+                  <div class="flip-card-back">
+                    <p>Matching Recipe:</p>
+                    <%- matchingRecipe %>
+                    <%- theRecipe %>
+                    <br>
+                                      </div>
+                </div>
+              </div>
+              
+              
+              <!-- Modal -->
+              <div class="modal fade" id="myModal" role="dialog">
+                <div class="modal-dialog">
+              
+                  <!-- Modal content-->
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+              
+                </div>
+              </div>
+
+              <a href="/home" class="test" role="button" aria-disabled="true">Back to Home</a>
+
+
+               
+         
     </div>
     
     <br>
@@ -73,6 +107,10 @@
         background-color: white;
         border: 1px solid black;
 
+    }
+    h2{
+        font-family: 'Dekko';
+        font-size: 40px;
     }
     p {text-align: center; font-family: 'Manrope'; font-size: 20px;}
     body{
@@ -90,8 +128,7 @@
 
     }
     .test{
-        position: relative;
-        display: inline-block;
+        bottom: 5%;
         padding: 0.25em 0.5em;
         text-decoration: none;
         color: #FFF;
@@ -103,7 +140,54 @@
         font-family: 'Dekko';
     }
 
-
     .test:active {  box-shadow: 0 0 2px rgba(0, 0, 0, 0.30); }
+
+    body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-image: url(/views/img/veggieBackground.jpeg);
+  }
+  .flip-card {
+      margin: 0 auto;
+      float: none;
+      margin-bottom: 10px;
+      background-color: transparent;
+      width: 300px;
+      height: 300px;
+      perspective: 1000px;
+  }
+
+  .flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  }
+
+  .flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+  }
+
+  .flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+
+  .flip-card-front {
+    background-color: #bbb;
+    color: black;
+  }
+
+  .flip-card-back {
+    background-color: rgb(112, 180, 112);
+    color: white;
+    transform: rotateY(180deg);
+  }
+</style>
 </style>
   
