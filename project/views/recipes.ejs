@@ -53,21 +53,23 @@
                       
                     <% }); %>
                 <% } %>
-                <h2>Here's what Green Machine came up with!:</h2>
+                <h2>Here's what Green Machine came up with!: </h2>
                 
             </div>
 
             <div class="flip-card">
                 <div class="flip-card-inner">
                   <div class="flip-card-front">
-                    <img src="<%- matchingImg %>" alt="Avatar" style="width:300px;height:300px;">
+                    <img src="<%- matchingImg %>" alt="Recipe" style="width:400px;height:400px;">
                   </div>
                   <div class="flip-card-back">
                     <p>Matching Recipe:</p>
-                    <%- matchingRecipe %>
+                    <span style = "font-size: 30px;">
+                        <%- matchingRecipe %>
+                    </span>
                     <%- theRecipe %>
                     <br>
-                                      </div>
+                    </div>
                 </div>
               </div>
               
@@ -89,7 +91,7 @@
                 </div>
               </div>
 
-              <a href="/home" class="test" role="button" aria-disabled="true">Back to Home</a>
+              <a href="/home" class="test" role="button">Back to Home</a>
 
 
                
@@ -101,7 +103,8 @@
   </body>
 
   <style>
-    h1 {text-align: center;
+    h1 {
+        text-align: center;
         font-family:'Leckerli One';
         font-size: 60px; color: rgb(81, 136, 81);
         background-color: white;
@@ -124,7 +127,6 @@
         margin: auto;
         margin-top: 30px;
         padding: 1%;
-        text-align: center;
 
     }
     .test{
@@ -138,29 +140,33 @@
         font-weight: bold;
         border: solid 2px #4a7449;
         font-family: 'Dekko';
+
+        
     }
 
     .test:active {  box-shadow: 0 0 2px rgba(0, 0, 0, 0.30); }
 
     body {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Manrope';
+    font-size: 20px;
     background-image: url(/views/img/veggieBackground.jpeg);
   }
   .flip-card {
       margin: 0 auto;
-      float: none;
+      float:left;
       margin-bottom: 10px;
       background-color: transparent;
-      width: 300px;
-      height: 300px;
+      width: 400px;
+      height: 400px;
       perspective: 1000px;
+      padding-left: 2%;
   }
 
   .flip-card-inner {
     position: relative;
     width: 100%;
     height: 100%;
-    text-align: center;
+    text-align:center;
     transition: transform 0.6s;
     transform-style: preserve-3d;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
