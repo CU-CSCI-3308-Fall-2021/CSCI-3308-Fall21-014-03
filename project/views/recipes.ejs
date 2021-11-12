@@ -32,7 +32,7 @@
                     
                     <% recipes.forEach(function(recipe) { %>
                       <% var currCount = 0; %>
-                      <% var currRecipe = recipe.dish_name %>
+                      <% var currRecipe = recipe.dish_name; %>
                       <% var parts = recipe.parts; %>
                      
                       <% ingredients.forEach(function(ingredient) { %>
@@ -47,12 +47,12 @@
                       <% } %>
                       <% if(currCount >= matchCount) { %>
                           <% matchCount = currCount; %>
-                          <% matchingRecipe = recipe.dish_name %>
-                          <% matchingImg = '../views/img/'+recipe.img %>
-                          <% matchingQuantity = recipe.quanity %>
-                          <% theRecipe = recipe.recipeblurb %>
+                          <% matchingRecipe = recipe.dish_name; %>
+                          <% matchingImg = '../views/img/'+recipe.img; %>
+                          <% matchingQuantity = recipe['quantity']; %>
+                          <% theRecipe = recipe.recipeblurb; %>
                           
-                          <%console.log(matchingQuantity); %>
+                          
                       <% } %>
                       
                     <% }); %>
@@ -60,7 +60,10 @@
                 <h2>Here's what Green Machine came up with!: </h2>
                 
             </div>
+          
             <%- theRecipe %>
+            <br>
+            <br>
             <div class="flip-card">
                 <div class="flip-card-inner">
                   <div class="flip-card-front">
@@ -69,10 +72,14 @@
                   <div class="flip-card-back">
                     <p>Matching Recipe:</p>
                     <span style = "font-size: 30px;">
-                        <%- matchingRecipe %>
-                        <% if(matchingRecipe){ %>
-                          <% console.log(matchingRecipe); %>
-                        <% } %>
+                      <%- matchingRecipe %>
+                      <br>
+                      <% if(matchingRecipe){ %>
+                        <% matchingQuantity.forEach(function(item) { %>
+                          <%- item %>
+                          <br>
+                       <% }) %>
+                       <% } %>
                     </span>
                     
                     <br>

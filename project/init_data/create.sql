@@ -30,7 +30,7 @@ VALUES('Muffins', 'cherryMuffins.png', ARRAY ['put recipe measurements here'], A
 INSERT INTO recipes(dish_name, img, recipeBlurb, quantity, parts)
 VALUES('Muffins', 'cherryMuffins.png', 'recipeBlurb', ARRAY ['1 cup flour', '1/2 sugar'], ARRAY ['flour', 'baking powder', 'salt', 'sugar', 'eggs', 'milk', 'vegatable oil', 'cherries']),
 ('Chocolate Chip Cookies', 'chocolateChipCookie.png', 'recipeBlurb', ARRAY ['1 cup flour', '1/2 sugar'], ARRAY ['flour', 'baking powder', 'salt', 'sugar', 'eggs', 'chocolate chips']),
-('Sugar Cookies', 'sugarCookies.png', 'recipeBlurb',  ARRAY ['1 cup flour', '1/2 sugar'], ARRAY ['flour', 'baking powder', 'salt', 'sugar', 'eggs']),
+('Sugar Cookies', 'sugarCookies.png', '1) Mix together dry ingredients. 2) Add egg and milk and beat to combine. 3)Put mixer on low speed, gradually add flour, and beat until mixture pulls away from the side of the bowl. 4) Divide the dough in half, wrap in waxed paper, and refrigerate for 2 hours. 5) Preheat oven to 375. 6) Bake for 10 minutes or until ready.',  ARRAY ['1 cup flour', '1/2 sugar'], ARRAY ['flour', 'baking powder', 'salt', 'sugar', 'eggs']),
 ('Seafood Pasta', 'seafoodPasta.png', 'recipeBlurb', ARRAY ['1 cup flour', '1/2 sugar'], ARRAY ['shrimp', 'garlic', 'lemon juice', 'white wine', 'cream', 'chili flakes', 'pasta']),
 ('Fried Rice', 'friedRice.png', 'recipeBlurb', ARRAY ['1 cup flour', '1/2 sugar'], ARRAY ['rice', 'egg', 'soy sauce', 'oyster sauce', 'sesame oil', 'butter']),
 ('Simple salad','simpleSalad.png', 'recipeBlurb', ARRAY ['1 cup flour', '1/2 sugar'], ARRAY ['spinach', 'tomato', 'red onion', 'sesame oil']),
