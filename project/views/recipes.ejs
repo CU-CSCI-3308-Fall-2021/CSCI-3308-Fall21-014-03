@@ -58,6 +58,7 @@
                     <% }); %>
                 <% } %>
                 <h2>Here's what Green Machine came up with!: </h2>
+
                 
             </div>
             
@@ -85,11 +86,25 @@
                 <span style="float: right; word-wrap: break-word; width: 800px;">
                   <br>
                   <br>
+                  <p style="text-align: center; margin-right: 11%; font-size:larger;">
+                    <%- matchingRecipe %>
+                  </p>
                   <%- theRecipe %>
+                  <div style="text-align: center; margin-right: 11%;">
+                    <br>
+                    <a href="/home" class="test">Back to Home</a>
+                    <br>
+                    <br>
+                    <p style="font-size: small;">
+                      Recipe adapted from <a>allrecipes.com</a>
+                    </p>
+                  </div>
+                  
                   <br>
                 </span>
                    
     </div>
+
     <br>
 
   </body>
@@ -132,9 +147,7 @@
         box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), inset 0 -2px 0 rgba(0, 0, 0, 0.05);
         font-weight: bold;
         border: solid 2px #4a7449;
-        font-family: 'Dekko';
-
-        
+        font-family: 'Dekko';  
     }
 
     .test:active {  box-shadow: 0 0 2px rgba(0, 0, 0, 0.30); }
@@ -187,6 +200,8 @@
     color: white;
     transform: rotateY(180deg);
   }
-</style>
+  .p{
+    text-align: center;
+  }
 </style>
   
