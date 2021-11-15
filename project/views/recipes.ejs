@@ -60,10 +60,7 @@
                 <h2>Here's what Green Machine came up with!: </h2>
                 
             </div>
-          
-            <%- theRecipe %>
-            <br>
-            <br>
+            
             <div class="flip-card">
                 <div class="flip-card-inner">
                   <div class="flip-card-front">
@@ -71,7 +68,7 @@
                   </div>
                   <div class="flip-card-back">
                     <p>Matching Recipe:</p>
-                    <span style = "font-size: 30px;">
+                    <span style = "font-size: 18px;">
                       <%- matchingRecipe %>
                       <br>
                       <% if(matchingRecipe){ %>
@@ -81,37 +78,18 @@
                        <% }) %>
                        <% } %>
                     </span>
-                    
-                    <br>
                     </div>
                 </div>
+                
               </div>
-              
-              
-              <!-- Modal -->
-              <div class="modal fade" id="myModal" role="dialog">
-                <div class="modal-dialog">
-              
-                  <!-- Modal content-->
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    </div>
-                  </div>
-              
-                </div>
-              </div>
-
-              <a href="/home" class="test" role="button">Back to Home</a>
-
-
-               
-         
+                <span style="float: right; word-wrap: break-word; width: 800px;">
+                  <br>
+                  <br>
+                  <%- theRecipe %>
+                  <br>
+                </span>
+                   
     </div>
-    
     <br>
 
   </body>
@@ -128,6 +106,7 @@
     h2{
         font-family: 'Dekko';
         font-size: 40px;
+        text-align: center;
     }
     p {text-align: center; font-family: 'Manrope'; font-size: 20px;}
     body{
