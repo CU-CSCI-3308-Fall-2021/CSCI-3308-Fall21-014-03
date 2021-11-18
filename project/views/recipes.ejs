@@ -24,7 +24,6 @@
             <div class="form-group row">
            
                 <% if (ingredients) { %>
-                   <% var table = ''; %>
                     <% var matchCount = 0; %>
                     <% var matchingRecipe = ''; %>
                     <% var matchingImg = ''; %>
@@ -50,16 +49,11 @@
                           <% matchingRecipe = recipe.dish_name; %>
                           <% matchingImg = '../views/img/'+recipe.img; %>
                           <% matchingQuantity = recipe['quantity']; %>
-                          <% theRecipe = recipe.recipeblurb; %>
-                          
-                          
+                          <% theRecipe = recipe.recipeblurb; %>   
                       <% } %>
-                      
                     <% }); %>
                 <% } %>
                 <h2>Here's what Green Machine came up with!: </h2>
-
-                
             </div>
             
             <div class="flip-card">
@@ -104,11 +98,8 @@
                 </span>
                    
     </div>
-
     <br>
-
   </body>
-
   <style>
     h1 {
         text-align: center;
