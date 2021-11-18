@@ -1,7 +1,3 @@
-DROP TABLE IF EXISTS ingredients CASCADE;
-CREATE TABLE IF NOT EXISTS ingredients(
-  name VARCHAR(50) NOT NULL );
-
 DROP TABLE IF EXISTS recipes CASCADE;
 CREATE TABLE IF NOT EXISTS recipes(
   dish_name VARCHAR(30), 
@@ -9,20 +5,6 @@ CREATE TABLE IF NOT EXISTS recipes(
   recipeBlurb VARCHAR(6000),
   quantity VARCHAR(3000)[],
   parts VARCHAR(30)[]);
-
-
-INSERT INTO ingredients(name)
-VALUES ('eggs'),('flour'),('butter'),('sugar'),('salt'),('pepper'),('baking powder'),
-('milk'),('beef'),('pork'),('seafood'),('pasta'), ('parsley'),('onions'),('carrots'), ('potatos'),('vegetable oil'),
-('garlic'),('lemon juice'), ('white wine'), ('cream'),('chili flakes'),('rice'),('soy sauce'), ('oyster sauce'),
-('sesame oil'), ('olive oil'), ('cherries'), ('chocolate chips'), ('shrimp'), ('Pinot Grigio wine'), ('parmesan cheese'), 
-('paprika'), ('parsely'), ('frozen vegetables'), ('bacon'), ('kale'), ('lima beans'), ('tomato'), ('Gouda cheese'), ('olives'),
-('mushroom'), ('chicken stock'), ('vegetable broth'), ('lime'), ('lemongrass'), ('tom yum paste'), ('chili sauce'),
-('ginger'), ('green onion'), ('radish'), ('egg yolks'), ('cream of tartar'), ('hot dogs'), ('macaroni'), 
-('parmesan'), ('bread crumbs'),('tofu'), ('black beans'), ('beans'), ('oregano'), ('salsa'), ('sausage'), ('beef'), 
-('ground beef'), ('tomato sauce'), ('noodles'), ('brown sugar'), ('milk'), ('cinnamon'), ('pumpkin'), ('red wine vinegar'),
-('red onion'),('cherry tomato'),('feta cheese'), ('cucumber'), ('quinoa'), ('cumin'), ('lime juice'), ('cilantro'),
-('red lentils'),('lentils'),('cayenne'),('curry powder'), ('coconut milk'), ('spinach'), ('brussel sprouts'), ('maple syrup');
 
 INSERT INTO recipes(dish_name, img, recipeBlurb, quantity, parts)
 VALUES('Muffins', 'cherryMuffins.png', '1) Preheat oven to 400 degrees F (200 degrees C). Line a muffin tin with paper liners. 2) Mix flour, 3/4 cup sugar, baking powder, and salt together in a bowl. 3) Whisk remaining ingredients into bowl. Fold cherries into batter and load into tray. 4)Bake muffins in the preheated oven until a toothpick inserted into the center comes out clean, about 20 minutes. Transfer to a wire rack to cool.', ARRAY ['3 eggs', '1 1/2 cup milk', '1 teaspoon vanilla extract', '3 cups flour', '1 cup sugar', '2 1/2 teaspoons baking powder', 'pinch of salt', '1/2 cup butter', '2 cups cherries', '1 teaspoon freshly grated lemon zest', '2 tablespoons butter'], ARRAY ['flour', 'baking powder', 'salt', 'sugar', 'eggs', 'milk', 'vegetable oil', 'cherries', 'butter']),
