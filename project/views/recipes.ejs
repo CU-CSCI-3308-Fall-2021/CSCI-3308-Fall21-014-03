@@ -9,7 +9,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
- 
+
     <h1>Green Machine</h1>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Krub">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Leckerli One">
@@ -17,23 +17,23 @@
     <link rel="stylesheet" href='https://fonts.googleapis.com/css?family=Manrope'>
   </head>
   <body>
-  
-  
+
+
     <div class="container1">
         <form action="/recipes/generate_recipe" method="get">
             <div class="form-group row">
-           
+
                 <% if (ingredients) { %>
                     <% var matchCount = 0; %>
                     <% var matchingRecipe = ''; %>
                     <% var matchingImg = ''; %>
                     <% var theRecipe = ''; %>
-                    
+
                     <% recipes.forEach(function(recipe) { %>
                       <% var currCount = 0; %>
                       <% var currRecipe = recipe.dish_name; %>
                       <% var parts = recipe.parts; %>
-                     
+
                       <% ingredients.forEach(function(ingredient) { %>
                         <% parts.forEach(function(part) { %>
                           <% if(part == ingredient.ingredient_name) { %>
@@ -49,13 +49,13 @@
                           <% matchingRecipe = recipe.dish_name; %>
                           <% matchingImg = '../views/img/'+recipe.img; %>
                           <% matchingQuantity = recipe['quantity']; %>
-                          <% theRecipe = recipe.recipeblurb; %>   
+                          <% theRecipe = recipe.recipeblurb; %>
                       <% } %>
                     <% }); %>
                 <% } %>
                 <h2>Here's what Green Machine came up with!: </h2>
             </div>
-            
+
             <div class="flip-card">
                 <div class="flip-card-inner">
                   <div class="flip-card-front">
@@ -75,7 +75,7 @@
                     </span>
                     </div>
                 </div>
-                
+
               </div>
                 <span style="float: right; word-wrap: break-word; width: 800px;">
                   <br>
@@ -84,21 +84,27 @@
                     <%- matchingRecipe %>
                   </p>
                   <%- theRecipe %>
-                  <div style="text-align: center; margin-right: 11%;">
-                    <br>
-                    <a href="/home" class="test">Back to Home</a>
-                    <br>
-                    <br>
-                    <p style="font-size: small;">
-                      Recipe adapted from <a>allrecipes.com</a>
-                    </p>
-                  </div>
-                  
                   <br>
                 </span>
-                   
+    </form>
     </div>
     <br>
+    <br>
+    <div style="text-align: center; margin-right: 11%;">
+      <form method="post" action="home/clear_ingredients" class="inline">
+        <input type="hidden" name="extra_submit_param" value="extra_submit_value">
+        <button type="submit" name="submit_param" value="submit_value" class="test">
+          Return to home and clear ingredients to start over
+        </button>
+      </form>
+      <br>
+      <a href="/home/" class="test">Return to home and add more ingredients</a>
+      <br>
+      <br>
+      <p style="font-size: small;">
+        Recipe adapted from <a>allrecipes.com</a>
+      </p>
+    </div>
   </body>
   <style>
     h1 {
@@ -138,7 +144,7 @@
         box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), inset 0 -2px 0 rgba(0, 0, 0, 0.05);
         font-weight: bold;
         border: solid 2px #4a7449;
-        font-family: 'Dekko';  
+        font-family: 'Dekko';
     }
 
     .test:active {  box-shadow: 0 0 2px rgba(0, 0, 0, 0.30); }
@@ -195,4 +201,3 @@
     text-align: center;
   }
 </style>
-  
