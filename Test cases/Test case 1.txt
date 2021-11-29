@@ -1,0 +1,13 @@
+Test case 1: Seeing if we can get tom yum by entering ingredients shrimp and green onion 
+
+web_1  |
+web_1  | > project@1.0.0 start /home/node/app
+web_1  | > node server.js
+web_1  |
+web_1  | 3000 is the magic port
+web_1  | INFO: [ { ingredient_name: 'shrimp' } ]
+web_1  | INFO: [ { ingredient_name: 'shrimp' }, { ingredient_name: 'green onion' } ]
+
+
+
+(Successful)

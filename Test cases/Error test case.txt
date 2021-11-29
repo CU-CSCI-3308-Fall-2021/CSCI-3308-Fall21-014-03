@@ -1,0 +1,10 @@
+Testing if the program can catch non-existent ingredients or errors:
+
+
+Entering 'dsaklfmasdf' 
+web_1  | INFO: [ { ingredient_name: 'dsaklfmasdf' } ]
+
+(SUCCESS: led to proper error page)
+
+Entering blank ingredient 
+(SUCCESS: Gave a prompt to fill out the field) 
